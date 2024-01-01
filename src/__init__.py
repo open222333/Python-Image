@@ -6,5 +6,5 @@ conf.read(os.path.join('conf', 'config.ini'))
 
 
 DIR_PATH = conf.get('BASIC', 'DIR_PATH', fallback='test')
-if os.path.exists(DIR_PATH):
+if not os.path.exists(DIR_PATH):
     os.makedirs(DIR_PATH)

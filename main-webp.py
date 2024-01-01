@@ -1,5 +1,6 @@
 from argparse import ArgumentParser
 from src.image import ImageWebp
+from src.progress_bar import ProgressBar
 from src.tool import get_all_files
 from src import DIR_PATH
 import os
@@ -12,8 +13,9 @@ args = parser.parse_args()
 if __name__ == '__main__':
     if os.path.exists(args.dir_path):
         files = get_all_files(args.dir_path)
+        p = ProgressBar()
         for file in files:
-            # print(file)
+            p(total=len(files), in_loop=True)
             iw = ImageWebp(source_path=file)
             if args.remove_source:
                 iw.enable_remove_source()
