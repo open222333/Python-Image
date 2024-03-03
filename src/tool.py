@@ -1,3 +1,4 @@
+import shutil
 import os
 
 
@@ -30,3 +31,21 @@ def get_all_files(dir_path: str, extensions=None):
                 target_file_path.append(file)
     target_file_path.sort()
     return target_file_path
+
+
+def move_files_and_remove_subdirectories(source_path: str):
+    """移動子資料夾檔案至資料夾並刪除子資料夾
+
+    Args:
+        source_path (str): 資料夾路徑
+    """
+    for subfolder_name in os.listdir(source_path):
+        subfolder_path = os.path.join(source_path, subfolder_name)
+
+        if os.path.isdir(subfolder_path):
+            for file_name in os.listdir(subfolder_path):
+                # print(f'source_path:{source_path}')
+                destination_path = os.path.join(subfolder_path, file_name)
+                # print(f'destination_path:{destination_path}')
+                shutil.copy2(destination_path, source_path)
+            shutil.rmtree(subfolder_path)
