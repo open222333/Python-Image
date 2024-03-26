@@ -7,7 +7,7 @@ import os
 
 parser = ArgumentParser()
 parser.add_argument('-d', '--dir_path', type=str, help='來源資料夾位置', default=DIR_PATH)
-parser.add_argument('--remove_source', action='store_true', help='開啟 轉檔後刪除原檔 功能')
+parser.add_argument('-r', '--remove_source', action='store_true', help='開啟 轉檔後刪除原檔 功能')
 parser.add_argument('-R', '--remove_subdirectories', action='store_true', help='開啟 移動子資料夾檔案至資料夾並刪除子資料夾 功能')
 args = parser.parse_args()
 
