@@ -2,7 +2,7 @@ from configparser import ConfigParser
 import os
 
 conf = ConfigParser()
-conf.read(os.path.join('conf', 'config.ini'))
+conf.read(os.path.join('conf', 'config.ini'), encoding='utf-8')
 
 
 DIR_PATH = conf.get('BASIC', 'DIR_PATH', fallback='test')
